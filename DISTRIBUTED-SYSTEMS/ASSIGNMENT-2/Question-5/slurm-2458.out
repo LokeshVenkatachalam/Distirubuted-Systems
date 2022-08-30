@@ -1,0 +1,45 @@
+==========================================
+SLURM_JOB_ID = 2458
+SLURM_NODELIST = node02
+SLURM_JOB_GPUS = 
+==========================================
+[node02:575671:0:575671] Caught signal 11 (Segmentation fault: address not mapped to object at address 0xb88ef28)
+==== backtrace (tid: 575671) ====
+ 0 0x0000000000055b73 ucs_debug_print_backtrace()  /build-result/src/hpcx-v2.7.0-gcc-MLNX_OFED_LINUX-5.1-0.6.6.0-redhat8.1-x86_64/ucx-v1.9.x/src/ucs/debug/debug.c:656
+ 1 0x0000000000012ce0 __funlockfile()  :0
+ 2 0x000000000040131d std::vector<int, std::allocator<int> >::~vector()  ???:0
+ 3 0x0000000000401d27 std::_Destroy<std::vector<int, std::allocator<int> > >()  ???:0
+ 4 0x0000000000401b82 std::_Destroy_aux<false>::__destroy<std::vector<int, std::allocator<int> >*>()  ???:0
+ 5 0x00000000004019d1 std::_Destroy<std::vector<int, std::allocator<int> >*>()  ???:0
+ 6 0x0000000000401767 std::_Destroy<std::vector<int, std::allocator<int> >*, std::vector<int, std::allocator<int> > >()  ???:0
+ 7 0x0000000000401419 std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::~vector()  ???:0
+ 8 0x0000000000401129 main()  ???:0
+ 9 0x000000000003acf3 __libc_start_main()  ???:0
+10 0x0000000000400c0e _start()  ???:0
+=================================
+[node02:575671] *** Process received signal ***
+[node02:575671] Signal: Segmentation fault (11)
+[node02:575671] Signal code:  (-6)
+[node02:575671] Failing at address: 0x8040008c8b7
+[node02:575671] [ 0] /lib64/libpthread.so.0(+0x12ce0)[0x14e9f4413ce0]
+[node02:575671] [ 1] a.out[0x40131d]
+[node02:575671] [ 2] a.out[0x401d27]
+[node02:575671] [ 3] a.out[0x401b82]
+[node02:575671] [ 4] a.out[0x4019d1]
+[node02:575671] [ 5] a.out[0x401767]
+[node02:575671] [ 6] a.out[0x401419]
+[node02:575671] [ 7] a.out[0x401129]
+[node02:575671] [ 8] /lib64/libc.so.6(__libc_start_main+0xf3)[0x14e9f4075cf3]
+[node02:575671] [ 9] a.out[0x400c0e]
+[node02:575671] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 575671 on node node02 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+
+real	0m1.069s
+user	0m1.262s
+sys	0m1.675s

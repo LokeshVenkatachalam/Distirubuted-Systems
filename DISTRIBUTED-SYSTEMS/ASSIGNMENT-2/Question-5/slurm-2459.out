@@ -1,0 +1,55 @@
+==========================================
+SLURM_JOB_ID = 2459
+SLURM_NODELIST = node02
+SLURM_JOB_GPUS = 
+==========================================
+[node02:575784:0:575784] Caught signal 11 (Segmentation fault: address not mapped to object at address 0xf0aaad8)
+==== backtrace (tid: 575784) ====
+ 0 0x0000000000055b73 ucs_debug_print_backtrace()  /build-result/src/hpcx-v2.7.0-gcc-MLNX_OFED_LINUX-5.1-0.6.6.0-redhat8.1-x86_64/ucx-v1.9.x/src/ucs/debug/debug.c:656
+ 1 0x0000000000012ce0 __funlockfile()  :0
+ 2 0x000000000009cf21 __GI___libc_free()  :0
+ 3 0x0000000000401c0e __gnu_cxx::new_allocator<int>::deallocate()  ???:0
+ 4 0x0000000000401a80 std::allocator_traits<std::allocator<int> >::deallocate()  ???:0
+ 5 0x0000000000401868 std::_Vector_base<int, std::allocator<int> >::_M_deallocate()  ???:0
+ 6 0x0000000000401592 std::_Vector_base<int, std::allocator<int> >::~_Vector_base()  ???:0
+ 7 0x0000000000401367 std::vector<int, std::allocator<int> >::~vector()  ???:0
+ 8 0x0000000000401d4f std::_Destroy<std::vector<int, std::allocator<int> > >()  ???:0
+ 9 0x0000000000401baa std::_Destroy_aux<false>::__destroy<std::vector<int, std::allocator<int> >*>()  ???:0
+10 0x00000000004019f9 std::_Destroy<std::vector<int, std::allocator<int> >*>()  ???:0
+11 0x000000000040178f std::_Destroy<std::vector<int, std::allocator<int> >*, std::vector<int, std::allocator<int> > >()  ???:0
+12 0x0000000000401441 std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > >::~vector()  ???:0
+13 0x0000000000401160 main()  ???:0
+14 0x000000000003acf3 __libc_start_main()  ???:0
+15 0x0000000000400c0e _start()  ???:0
+=================================
+[node02:575784] *** Process received signal ***
+[node02:575784] Signal: Segmentation fault (11)
+[node02:575784] Signal code:  (-6)
+[node02:575784] Failing at address: 0x8040008c928
+[node02:575784] [ 0] /lib64/libpthread.so.0(+0x12ce0)[0x14f882ffcce0]
+[node02:575784] [ 1] /lib64/libc.so.6(cfree+0x21)[0x14f882cc0f21]
+[node02:575784] [ 2] a.out[0x401c0e]
+[node02:575784] [ 3] a.out[0x401a80]
+[node02:575784] [ 4] a.out[0x401868]
+[node02:575784] [ 5] a.out[0x401592]
+[node02:575784] [ 6] a.out[0x401367]
+[node02:575784] [ 7] a.out[0x401d4f]
+[node02:575784] [ 8] a.out[0x401baa]
+[node02:575784] [ 9] a.out[0x4019f9]
+[node02:575784] [10] a.out[0x40178f]
+[node02:575784] [11] a.out[0x401441]
+[node02:575784] [12] a.out[0x401160]
+[node02:575784] [13] /lib64/libc.so.6(__libc_start_main+0xf3)[0x14f882c5ecf3]
+[node02:575784] [14] a.out[0x400c0e]
+[node02:575784] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 575784 on node node02 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+
+real	0m1.032s
+user	0m2.154s
+sys	0m1.763s

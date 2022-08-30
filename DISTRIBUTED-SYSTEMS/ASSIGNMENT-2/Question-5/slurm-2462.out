@@ -1,0 +1,40 @@
+==========================================
+SLURM_JOB_ID = 2462
+SLURM_NODELIST = node02
+SLURM_JOB_GPUS = 
+==========================================
+free(): invalid size
+[node02:576124] *** Process received signal ***
+[node02:576124] Signal: Aborted (6)
+[node02:576124] Signal code:  (-6)
+[node02:576124] [ 0] /lib64/libpthread.so.0(+0x12ce0)[0x14b0d14d9ce0]
+[node02:576124] [ 1] /lib64/libc.so.6(gsignal+0x10f)[0x14b0d114fa9f]
+[node02:576124] [ 2] /lib64/libc.so.6(abort+0x127)[0x14b0d1122e05]
+[node02:576124] [ 3] /lib64/libc.so.6(+0x91037)[0x14b0d1192037]
+[node02:576124] [ 4] /lib64/libc.so.6(+0x9840c)[0x14b0d119940c]
+[node02:576124] [ 5] /lib64/libc.so.6(+0x99d1c)[0x14b0d119ad1c]
+[node02:576124] [ 6] a.out[0x401c42]
+[node02:576124] [ 7] a.out[0x401ab4]
+[node02:576124] [ 8] a.out[0x40189c]
+[node02:576124] [ 9] a.out[0x4015c6]
+[node02:576124] [10] a.out[0x40139b]
+[node02:576124] [11] a.out[0x401d83]
+[node02:576124] [12] a.out[0x401bde]
+[node02:576124] [13] a.out[0x401a2d]
+[node02:576124] [14] a.out[0x4017c3]
+[node02:576124] [15] a.out[0x401475]
+[node02:576124] [16] a.out[0x401195]
+[node02:576124] [17] /lib64/libc.so.6(__libc_start_main+0xf3)[0x14b0d113bcf3]
+[node02:576124] [18] a.out[0x400c0e]
+[node02:576124] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 576124 on node node02 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------
+
+real	0m0.898s
+user	0m1.125s
+sys	0m1.651s

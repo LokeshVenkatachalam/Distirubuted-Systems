@@ -1,0 +1,2 @@
+No of triangles is 4 
+No of cycles of length 4 is 3 
