@@ -56,7 +56,7 @@ int main(int argc,char **argv ){
     if (myid == 0){
         freopen(argv[2], "w", stdout);   // Opening output file
 
-	    printf("Sin(%0.12Lf) is approximately = %.12Lf\n",
+	    printf("Sin(%.12Lf) is approximately = %.12Lf\n",
 		   Input[0],sum);                     // Outputing the answer
 
         fclose(stdout);                       // Closing output.txt
