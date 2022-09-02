@@ -22,14 +22,16 @@ int main(int argc,char **argv ){
     if(n%numprocs != 0)
         size++;
 
-    std::vector<std::vector<int>> Edge  (n,std::vector<int>(n,0));
-    std::vector<std::vector<int>> Sum   (n,std::vector<int>(n,0));
-    std::vector<std::vector<int>> Count (n,std::vector<int>(n,0));
+    std::vector<std::vector<int>> Edge  (n,std::vector<int>(n,0)); // Adjacency Matrix
+    std::vector<std::vector<int>> Sum   (n,std::vector<int>(n,0)); // Count of common neighbours to vertex i,j in the given process
+    std::vector<std::vector<int>> Count (n,std::vector<int>(n,0)); // Sum of counts of common neighbours across process
+    // Inputing the graph as adjacency matrix 
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
             scanf("%d",&Edge[i][j]);
         }
     }
+    // Finding the count[i][j]-> no of common neighbours to both i,j in the submatrix given to a process
     for(int i = myid*(size); i < std::min(n,((myid+1)*(size))); i++){
         for(int j = 0; j < n; j++){
             if(Edge[i][j] == 0) continue;
@@ -46,23 +48,34 @@ int main(int argc,char **argv ){
     }
     
     if(myid == 0){
-        int triangles = 0;
-        int quadrilateral = 0;
+        int triangles = 0;                              // No of triangles                 
+        int quadrilateral = 0;                          // No of quadrilateral
+
         for(int i = 0; i < n; i++){
             for(int j = i+1; j < n; j++){
+                /*
+                # if i->j edge exists , then we can form a triangle with a neighbour of i,j
+                # Sum[i][j] gives no of common neighbour of i,j
+                # It implies no of triangles containing edge i,j is = Sum[i][j]
+                */
                 if(Edge[i][j] == 1)
                     triangles += Sum[i][j];
+                /*
+                # Every pair of common neigbour to i,j can form a cycle of length 4 with vertices i,j
+                # Sum[i][j] gives no of common neighbour of i,j
+                # It implies no of cycles of length 4,containing vertex i,j is = (Sum[i][j]*(Sum[i][j]-))/2
+                */
                 quadrilateral += (Sum[i][j]*(Sum[i][j]-1))/2;
             }
         }
-        triangles = triangles/3;
-        quadrilateral = quadrilateral/2;
+        triangles = triangles/3;                // Every triangles is counted as part of every edge,so by 3
+        quadrilateral = quadrilateral/2;        // Every cycle of length 4 is counted as part opposite pair of vertices, so by 2
 
-        freopen(argv[2], "w", stdout);                 // Opening output file
-
-	    printf("No of triangles is %d \n",triangles); // Outputing the answer
-        printf("No of cycles of length 4 is %d \n",quadrilateral);
-        fclose(stdout);                                // Closing output.txt
+        freopen(argv[2], "w", stdout);                              // Opening output file
+	    printf("No of triangles is %d \n",triangles);               // Outputing the answer
+        printf("No of cycles of length 4 is %d \n",quadrilateral);  // Output No of cycles of length 4
+        fclose(stdout);                                             // Closing output.txt
     }
     MPI_Finalize();
+    return 0;
 }

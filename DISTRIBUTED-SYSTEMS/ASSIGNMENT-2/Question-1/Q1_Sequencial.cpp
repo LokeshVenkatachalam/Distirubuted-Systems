@@ -52,7 +52,7 @@ int main(int argc,char **argv ){
     freopen(argv[2], "w", stdout);   // Opening input file
     for(int i = 0 ; i < n; i++){
         for(int j = 0; j < n; j++){
-            printf("%.8lf",AnsMatrix[chosen[i]][j]);
+            printf("%.12lf",AnsMatrix[chosen[i]][j]);
             if(j != n-1)
                 printf(" ");
         }

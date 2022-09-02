@@ -5,6 +5,6 @@
 #load the module on the node
 module load hpcx-2.7.0/hpcx-ompi
 #Compile Q3.cpp
-mpicc Q3.cpp
+mpic++ Q3.cpp
 #Run the excutable using two arguments `input_filename` `output_filename`
-time mpirun --use-hwthread-cpus a.out input_2.txt output_2.txt 
+time mpirun --use-hwthread-cpus a.out input_1.txt output_1.txt

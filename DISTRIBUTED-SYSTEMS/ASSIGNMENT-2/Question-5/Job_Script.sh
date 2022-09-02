@@ -7,4 +7,4 @@ module load hpcx-2.7.0/hpcx-ompi
 #Compile Q3.cpp
 mpic++ Q5.cpp
 #Run the excutable using two arguments `input_filename` `output_filename`
-time mpirun --use-hwthread-cpus a.out input_1.txt output_1.txt 
+time mpirun --use-hwthread-cpus a.out input_1.txt output_1_8.txt

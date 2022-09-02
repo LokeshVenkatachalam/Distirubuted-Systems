@@ -11,6 +11,7 @@ int main(int argc,char **argv ){
     int done = 0;
     int i=1;
     long double term=1;
+    bool negative = false;
 
     
     MPI_Init(&argc,&argv);  // Intializing  MPI
@@ -21,6 +22,10 @@ int main(int argc,char **argv ){
     if(myid==0){
         freopen(argv[1], "r", stdin);   // Opening input file
         scanf("%Lf %Lf",&Input[0],&Input[1]); // Inputing X and precission
+        if(Input[0] < 0){
+            negative = true;
+            Input[0] = Input[0]*-1;
+        }  
         fclose(stdin);
     }
 
@@ -55,6 +60,9 @@ int main(int argc,char **argv ){
     //Outputing the answer
     if (myid == 0){
         freopen(argv[2], "w", stdout);   // Opening output file
+
+        if(negative == true)
+            sum = sum*-1;
 
 	    printf("Sin(%.12Lf) is approximately = %.12Lf\n",
 		   Input[0],sum);                     // Outputing the answer

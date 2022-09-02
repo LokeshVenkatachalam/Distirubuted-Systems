@@ -109,7 +109,7 @@ int main(int argc,char **argv ){
             // Printing
 
             for(int j = 0; j < n; j++){
-                printf("%.8lf",AnsMatrix[chosen[i-1]][j]); // Printing A^(-1)[i,j]
+                printf("%.12lf",AnsMatrix[chosen[i-1]][j]); // Printing A^(-1)[i,j]
                 fflush(stdin);
                 if(j != n-1){
                     printf(" ");   // Spacing
