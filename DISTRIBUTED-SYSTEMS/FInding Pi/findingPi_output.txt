@@ -1,0 +1,9 @@
+Hello world from process 1 , we got 100 
+Hello world from process 0 , we got 100 
+pi is approximately 3.1416009869231249, Error is 0.0000083333333318
+Hello world from process 2 , we got 100 
+Hello world from process 3 , we got 100 
+Hello world from process 5 , we got 100 
+Hello world from process 4 , we got 100 
+Hello world from process 6 , we got 100 
+Hello world from process 7 , we got 100 

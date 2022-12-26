@@ -1,0 +1,7 @@
+Hello world from process 6 of 7
+Hello world from process 4 of 7
+Hello world from process 5 of 7
+Hello world from process 2 of 7
+Hello world from process 3 of 7
+Hello world from process 0 of 7
+Hello world from process 1 of 7

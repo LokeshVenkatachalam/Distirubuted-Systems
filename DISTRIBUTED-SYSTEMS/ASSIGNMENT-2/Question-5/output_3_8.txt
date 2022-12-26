@@ -1,0 +1,2 @@
+No of triangles is 1285 
+No of cycles of length 4 is 19784 
